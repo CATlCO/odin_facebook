@@ -1,0 +1,14 @@
+<h1>
+	<%= gravatar_for current_user %>
+	<%= current_user.name %>
+</h1>
+
+<%= form_for @post do |f| %>
+
+	<div class="field">
+		<%= f.text_area :content, placeholder: "what's on your mind...", class: "from-control", size: "40" %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Post", class: "btn btn-primary" %>
+	</div>
+<% end %>

@@ -1,4 +1,9 @@
 <h1>Users</h1>
-<% @users.each do |user| %>
-	<%= link_to user.email, user_path(user) %>
-<% end %>
+	<% @users.each do |user| %>
+		<div class="user">
+			<%= gravatar_for(user, 40) %>
+			<%= link_to user.name, user_path(user) %>
+			<%= link_to "Send friend request", '#', class: "btn btn-info" unless user == current_user%>
+		</div>
+	<% end %>
+
