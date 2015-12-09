@@ -1,0 +1,14 @@
+<% if current_user.friend?(user) %>
+	<%= render 'remove_friend', user: user, button: "Unfriend" %>
+<% elsif current_user.inv_friend?(user) %>
+	<%= render 'decline_request', user: user, button: "Unfriend" %>
+<% elsif current_user.request_sent?(user) %>
+	<span class="btn btn-default">Your friend request was sent</span>
+	<%= render 'remove_friend', user: user, button: "Cancel" %>
+<% elsif current_user.request_received?(user) %>
+	<span class="btn btn-default">This user sent you a friend request</span>	
+	<%= render 'accept_request', user: user %>
+	<%= render 'decline_request', user: user, button: "Decline" %>
+<% elsif current_user.stranger?(user) %>
+	<%= render 'add_friend', user: user unless user == current_user %>
+<% end %>

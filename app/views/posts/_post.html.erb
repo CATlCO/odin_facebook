@@ -13,4 +13,12 @@
 	<div class="content">
 		<%= post.content %>
 	</div>
+	<div class="likes">
+		<%= link_to pluralize(post.likes.count, 'like'), '#' %>
+		<%= link_to pluralize(post.comments.count, 'comment' ), '#' %>
+	</div>
+	<div class="like-buttons">
+		<%= render 'posts/like_form', post: post %>
+		<%= render 'posts/comment_form', post: post %>
+	</div>
 </div>

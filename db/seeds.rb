@@ -13,7 +13,7 @@ User.create!(
 	password_confirmation: "foobar"
 )
 
-20.times do |n|
+30.times do |n|
 	name = Faker::Name.name
 	User.create!(
 		name: name, 
@@ -22,8 +22,19 @@ User.create!(
 		password_confirmation: "password")
 end
 
-User.all.each do |user|
-	10.times do |n|
+10.times do |n|
+	User.all.each do |user|
 		user.posts.create!(content: Faker::Lorem.paragraph)
 	end
+end
+
+user1 = User.first
+User.all[1..8].each do |user|
+	user1.friendships.create!(friend_id: user.id, accepted: true)
+end
+User.all[9..15].each do |user|
+	user1.friendships.create!(friend_id: user.id)
+end
+User.all[16..25].each do |user|
+	user.friendships.create!(friend_id: user1.id)
 end

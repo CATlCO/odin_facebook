@@ -1,9 +1,11 @@
 <h1>Users</h1>
+	<table class="user-table">
 	<% @users.each do |user| %>
-		<div class="user">
-			<%= gravatar_for(user, 40) %>
-			<%= link_to user.name, user_path(user) %>
-			<%= link_to "Send friend request", '#', class: "btn btn-info" unless user == current_user%>
-		</div>
+		<tr class="user">
+			<td><%= gravatar_for(user, 40) %></td>
+			<td><%= link_to user.name, user_path(user) %></td>
+			<td><%= render 'friend_status', user: user %></td>
+		</tr>
+	<table>
 	<% end %>
 

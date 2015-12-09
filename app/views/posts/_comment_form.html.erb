@@ -1,0 +1,6 @@
+<%= form_for(post.comments.build) do |f| %>
+	<%= hidden_field_tag :post_id, post.id %>
+	<%= button_tag(type: 'submit', class: "btn btn-default") do %>
+	 <i class="glyphicon glyphicon-comment"></i> Comment
+	<% end %>
+<% end %>

@@ -1,0 +1,4 @@
+<%= form_for(current_user.inv_friendships.find_by(user_id: user.id),
+     html: { method: :delete }) do |f| %>
+	<%= f.submit button, class: "btn btn-danger" %>
+<% end %>
